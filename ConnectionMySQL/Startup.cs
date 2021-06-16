@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EFCoreMySQL.DBContexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConnectionMySQL
 {
@@ -23,7 +25,10 @@ namespace ConnectionMySQL
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContextPool<MyDBContext>(options => options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
