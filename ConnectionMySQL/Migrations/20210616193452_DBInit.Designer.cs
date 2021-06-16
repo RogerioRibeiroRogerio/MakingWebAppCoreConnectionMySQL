@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConnectionMySQL.Migrations
 {
     [DbContext(typeof(MyDBContext))]
-    [Migration("20210616192729_DBInit")]
+    [Migration("20210616193452_DBInit")]
     partial class DBInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
